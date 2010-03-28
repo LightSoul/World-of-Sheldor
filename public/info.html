@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Greeting</title>
+  </head>
+  <body>
+    <p>Hello, world!</p>
+World of Sheldor - README file <br/>
+<br/>
+Contributors:<br/>
+Robi Tacutu (robi.tacutu@gmail.com)<br/>
+Bogdan Dinu (bogdan.dinu@gmail.com)<br/>
+<br/>
+<br/>
+Useful Information:<br/>
+<br/>
+1. Using Git <br/>
+http://www.railstutorial.org/book#sec:git_setup<br/>
+<br/>
+OR<br/>
+<br/>
+Short version:<br/>
+1.1. git config --global user.name "Your Name"<br/>
+1.1. git config --global user.email youremail@example.com<br/>
+<br/>
+1.2. checkout project from my GitHub repository:
+1.2.1. In the Git GUI, create repository with the project directory (empty project)<br/>
+1.2.2. Setting GitHub (auth keys and repository in Git) <br/>
+In Git GUI, Help > Show SSH key (that is the public key). If there is no key, you can generate one. This public key must be put in GitHub (administrative panel). Note: I think the key uses the e-mail set in Git. <br/>   
+1.2.3. Then Remote>Add, name=github, location=git@github.com:LightSoul/World-of-Sheldor.git<br/>
+1.2.4. Remote > Fech From > github<br/>
+<br/>
+(to be continued... with more details about checkout, commiting and pushing)<br/>
+<br/>
+<br/>
+2. (Re)Deployment on Heroku<br/>
+2.1. Install => gem install heroku <br/>
+2.2. Adding SSH keys (previously created for Git) => heroku keys:add <br/>
+2.3. Pushing a site version => git push heroku [branch_name] <br/>
+(this can be also done from GitGUI) <br/>
+2.4. Migrating the database => heroku rake db:migrate <br/> 	
+  </body>
+</html>
