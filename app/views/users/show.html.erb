@@ -7,8 +7,52 @@
 		</h2>
     </td>
     <td class="sidebar round">
-      <strong>Name</strong> <%= h @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+		<strong>Name</strong> <%= h @user.name %><br />
+		<strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+		<% if signed_in? %>
+			<% if current_user?(@user) %>
+				<br /><strong>Friends</strong><br />
+				
+				<ul class="friends">
+					<% @friends.each do |friend| %>
+						<%= render :partial => 'friend', :locals => { :friend => friend, :list_type => :friends, :user => @user } %>
+					<% end %>
+				</ul>
+		
+				<strong>Invitations sent</strong><br />
+				<ul class="friends">
+					<% @sent_invitations.each do |friend| %>
+						<%= render :partial => 'friend', :locals => { :friend => friend, :list_type => :sent_invitations, :user => @user } %>
+					<% end %>
+				</ul>
+		      
+				<strong>Invitations received</strong><br />
+				<ul class="friends">
+					<% @received_invitations.each do |friend| %>
+						<%= render :partial => 'friend', :locals => { :friend => friend, :list_type => :received_invitations, :user => @user } %>
+					<% end %>
+				</ul>
+			<% else %>
+				<% if @friendship_status==:friends %>
+					<br />This user is already your friend - here you could show some friend-related stuff.<br />
+					<%= link_to "Remove friend", remove_friend_path(@user) %><br />
+				<% end %>
+				<% if @friendship_status==:none %>
+					<%= link_to "Add friend", add_friend_path(@user) %><br />
+				<% end %>
+
+				<% if @friendship_status==:pending_in %>
+					<%= h @user.name %> invited you to be friends
+					<%= link_to "Accept", accept_friend_path(@user) %><br />
+					<%= link_to "Reject", reject_friend_path(@user) %><br />
+				<% end %>
+
+				<% if @friendship_status==:pending_out %>
+					You have invited <%= h @user.name %> to be friends
+					<%= link_to "Cancel invitation", cancel_friendship_request_path(@user) %><br />
+				<% end %>
+	    	<% end %>
+    	<% end %>
     </td>
   </tr>
 </table>

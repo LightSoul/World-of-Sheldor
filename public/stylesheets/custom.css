@@ -184,3 +184,14 @@ ul.users {
 .users li {
   list-style: none;
 }
+
+/* Friend list */
+ul.friends {
+  padding: 0px;
+  margin-top: 1em;
+}
+
+.friends li {
+  list-style: none;
+  padding-left: 5px; 
+}

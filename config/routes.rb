@@ -9,7 +9,13 @@ ActionController::Routing::Routes.draw do |map|
   map.contact '/contact', :controller => 'pages', :action => 'contact'
   map.about   '/about',   :controller => 'pages', :action => 'about'
   map.help    '/help',    :controller => 'pages', :action => 'help'
-  map.signup '/signup',   :controller => 'users', :action => 'new'
+
+  map.signup  '/signup',   :controller => 'users', :action => 'new'
+  map.add_friend  'users/:id/add_friend',   :controller => 'users', :action => 'add_friend'
+  map.remove_friend  'users/:id/remove_friend',   :controller => 'users', :action => 'remove_friend'
+  map.accept_friend  'users/:id/accept_friend',   :controller => 'users', :action => 'accept_friend'
+  map.reject_friend  'users/:id/reject_friend',   :controller => 'users', :action => 'reject_friend'
+  map.cancel_friendship_request  'users/:id/cancel_friendship_request',   :controller => 'users', :action => 'cancel_friendship_request'
   
   # The priority is based upon order of creation: first created -> highest priority.
 

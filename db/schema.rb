@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100407120416) do
+ActiveRecord::Schema.define(:version => 20100408103053) do
 
   create_table "recipes", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(:version => 20100407120416) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "relationships", :force => true do |t|
+    t.integer "user1_id", :null => false
+    t.integer "user2_id", :null => false
+    t.boolean "pending"
+  end
+
+  add_index "relationships", ["user1_id", "user2_id"], :name => "index_relationships_on_user1_id_and_user2_id", :unique => true
+  add_index "relationships", ["user1_id"], :name => "index_relationships_on_user1_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

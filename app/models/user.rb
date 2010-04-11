@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
   
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
+  
+  has_many :links, :foreign_key => "user1_id", :class_name => "Relationship", :dependent => :destroy
+  has_many :reverse_links, :foreign_key => "user2_id", :class_name => "Relationship", :dependent => :destroy
+
+  has_many :friends, :through => :links, :source => "user2", :conditions => {"relationships.pending" => false }
+  has_many :pending_out, :through => :links, :source => "user2",:conditions => {"relationships.pending" => true }
+  has_many :pending_in, :through => :reverse_links, :source => "user1", :conditions => {"relationships.pending" => true }
 
   EmailRegex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -33,7 +40,7 @@ class User < ActiveRecord::Base
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
   end
-  
+
   private
     def encrypt_password
       unless password.nil?

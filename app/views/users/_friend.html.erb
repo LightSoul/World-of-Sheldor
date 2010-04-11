@@ -1,0 +1,14 @@
+<li>
+	<%= image_tag friend.gravatar_url :size => 20 %>
+	<%= link_to h(friend.name), friend %>
+	<% if list_type==:received_invitations %>
+		<%= link_to friendship_icon("accept.jpg", "Accept friend"), accept_friend_path(friend) %>
+		<%= link_to friendship_icon("delete.jpg", "Reject friend"), reject_friend_path(friend), :confirm => "You sure?" %>
+  	<% end %>
+	<% if list_type==:sent_invitations %>
+		<%= link_to friendship_icon("delete.jpg", "Cancel request"), cancel_friendship_request_path(friend), :confirm => "You sure?" %>
+  	<% end %>
+	<% if list_type==:friends %>
+		<%= link_to friendship_icon("delete.jpg", "Remove friend"), remove_friend_path(friend), :confirm => "You sure?" %>
+  	<% end %>
+</li>
