@@ -1,0 +1,35 @@
+<table class="profile">
+  <tr>
+    <td class="main">
+		<h2>
+		  <%= h @race.name %>
+		</h2>
+		<%= h @race.description %>
+    </td>
+  </tr>
+</table>
+<table class="editor">
+  <tr>
+    <td class="main">
+		<h3>New racial bonus:</h3>
+		<% form_for :race_bonus, @race_bonus, :url => add_race_bonus_path do |f| %>
+			<%= render :partial => 'race_bonus/fields', :locals => { :f => f} %>
+			<div class="actions">
+				<%= f.submit "Add" %>
+			</div>
+		<% end %>
+    </td>
+    <td class="sidebar round">
+		<h3>List of racial bonuses:</h3>
+		<% if @bonuses.empty? %>
+			There are no bonuses for this race.
+		<% else %>
+			<%= will_paginate @bonuses %>
+			<ul class="bonuses">
+			  <%= render @bonuses %>
+			</ul>
+			<%= will_paginate @bonuses %>
+		<% end %>    
+	</td>
+  </tr>
+</table>

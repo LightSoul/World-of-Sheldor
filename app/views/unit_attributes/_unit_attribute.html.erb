@@ -1,0 +1,6 @@
+<li>
+	<%= link_to h(unit_attribute.name), unit_attribute %> ( <%= h unit_attribute.symbol %> )
+	  | <%= link_to "edit", edit_unit_attribute_path(unit_attribute), :method => :edit %>
+	  | <%= link_to "delete", unit_attribute, :method => :delete, :confirm => "You sure?" %>
+	<br/><%= h(unit_attribute.description) %>
+</li>

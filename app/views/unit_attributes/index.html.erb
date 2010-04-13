@@ -1,0 +1,26 @@
+<h2>Unit attributes</h2>
+<table class="editor">
+  <tr>
+    <td class="main">
+		<h3>New unit attribute:</h3>
+		<% form_for @unit_attribute do |f| %>
+			<%= render :partial => 'fields', :locals => { :f => f } %>
+			<div class="actions">
+				<%= f.submit "Add" %>
+			</div>
+		<% end %>
+    </td>
+    <td class="sidebar round">
+		<h3>List of unit attributes:</h3>
+		<% if @unit_attributes.empty? %>
+			The attributes list is empty.
+		<% else %>
+			<%= will_paginate %>
+			<ul class="attributes">
+			  <%= render @unit_attributes %>
+			</ul>
+			<%= will_paginate %>
+		<% end %>    
+	</td>
+  </tr>
+</table>

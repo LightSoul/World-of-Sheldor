@@ -1,0 +1,26 @@
+<h2>Races</h2>
+<table class="editor">
+  <tr>
+    <td class="main">
+		<h3>New race:</h3>
+		<% form_for @race do |f| %>
+			<%= render :partial => 'fields', :locals => { :f => f } %>
+			<div class="actions">
+				<%= f.submit "Add" %>
+			</div>
+		<% end %>
+    </td>
+    <td class="sidebar round">
+		<h3>List of races:</h3>
+		<% if @races.empty? %>
+			The attributes list is empty.
+		<% else %>
+			<%= will_paginate %>
+			<ul class="races">
+			  <%= render @races %>
+			</ul>
+			<%= will_paginate %>
+		<% end %>    
+	</td>
+  </tr>
+</table>

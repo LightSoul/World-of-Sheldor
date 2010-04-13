@@ -1,0 +1,9 @@
+<h2>Edit race</h2>
+
+<% form_for(@race) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'fields', :locals => { :f => f } %>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

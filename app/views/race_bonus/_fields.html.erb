@@ -1,0 +1,22 @@
+<%= f.error_messages %>
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :description %><br />
+  <%= f.text_field :description %>
+</div>
+<div class="field">
+  <%= f.label :bonus_type %><br />
+  <%= f.select(:bonusType, ["absolute","relative"]) %>
+</div>
+<div class="field">
+  <%= f.label :value %><br />
+  <%= f.text_field :value %>
+</div>
+<% attributes = UnitAttribute.find(:all) %>
+<div class="field">
+  <%= f.label :unit_attribute %><br />
+  <%= f.collection_select(:unit_attribute_id, attributes, :id, :name, {:prompt => true}) %>
+</div>

@@ -1,0 +1,6 @@
+<li>
+	<%= link_to h(race.name), race %>
+	  | <%= link_to "edit", edit_race_path(race), :method => :edit %>
+	  | <%= link_to "delete", race, :method => :delete, :confirm => "You sure?" %>
+	<br/><%= h(race.description) %>
+</li>

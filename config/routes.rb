@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :recipes
+  map.resources :races
+  map.resources :unit_attributes
   map.resources :users
   map.resources :sessions, :only => [:new, :create, :destroy]
   
@@ -17,6 +18,16 @@ ActionController::Routing::Routes.draw do |map|
   map.reject_friend  'users/:id/reject_friend',   :controller => 'users', :action => 'reject_friend'
   map.cancel_friendship_request  'users/:id/cancel_friendship_request',   :controller => 'users', :action => 'cancel_friendship_request'
   
+  map.game_editor    '/game_editor',    :controller => 'pages', :action => 'game_editor'
+
+  map.edit  'unit_attributes/:id/edit',   :controller => 'unit_attributes', :action => 'edit'
+  map.edit  'races/:id/edit',   :controller => 'races', :action => 'edit'
+  
+  map.add_race_bonus  'races/:id/add_bonus',   :controller => 'races', :action => 'add_bonus'
+  map.delete_race_bonus  'races/:id/delete_bonus',   :controller => 'races', :action => 'delete_bonus'
+  map.edit_race_bonus  'races/:id/edit_bonus',   :controller => 'races', :action => 'edit_bonus'
+  map.update_race_bonus  'races/:id/update_bonus',   :controller => 'races', :action => 'update_bonus'
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

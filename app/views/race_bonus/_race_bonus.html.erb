@@ -1,0 +1,6 @@
+<li>
+	<%= h(race_bonus.name) %> [ <%= print_nicely(race_bonus) %> ]<br/>
+	(<%= h(race_bonus.description) %>)
+	  | <%= link_to "edit", edit_race_bonus_path(:bonus_id => race_bonus.id), :method => :edit_bonus %>
+	  | <%= link_to "delete", delete_race_bonus_path(:bonus_id => race_bonus.id), :method => :delete_bonus, :confirm => "You sure?" %>
+</li>
